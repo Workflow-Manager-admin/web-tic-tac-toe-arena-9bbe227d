@@ -1,82 +1,61 @@
-# Lightweight React Template for KAVIA
+# Tic Tac Toe Frontend – React
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A modern web-based Tic Tac Toe game built with React.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Interactive 3x3 game board
+- Player vs Player mode
+- Player vs Computer mode (AI)
+- Winning/draw detection & highlight
+- Game restart option
+- Score display (X, O, Draws)
+- Responsive, centered, modern light UI
+- Uses color theme:  
+  - Primary: #1976d2  
+  - Accent: #ff9800  
+  - Secondary: #424242
 
 ## Getting Started
 
-In the project directory, you can run:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `npm start`
+2. **(Optional) Set up theme via environment:**
+   - Copy `.env.example` to `.env` and override these (if needed):
+     ```
+     REACT_APP_PRIMARY_COLOR=#1976d2
+     REACT_APP_ACCENT_COLOR=#ff9800
+     REACT_APP_SECONDARY_COLOR=#424242
+     ```
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Run the app:**
+   ```
+   npm start
+   ```
 
-### `npm test`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Launches the test runner in interactive watch mode.
+## How to Play
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Click a game mode (PvP: two players, PvC: play against computer).
+- Click a square to make your move.
+- The first move is always by X.
+- The game tells you who wins or if it's a draw. 
+- Use **Restart** to clear the board and play again!
 
 ## Customization
 
-### Colors
+- Colors use CSS variables (see `src/App.css` or override via `.env`).
+- No external UI libraries, just React + plain CSS. 
+- Edit `src/App.js` to tweak gameplay.
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+## Testing
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+To run unit tests:
+
 ```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm test
+```

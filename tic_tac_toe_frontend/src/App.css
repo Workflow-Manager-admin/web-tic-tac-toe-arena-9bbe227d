@@ -1,104 +1,113 @@
+/* Modern Light Theme – Tic Tac Toe
+   Palette: --primary: #1976d2, --accent: #ff9800, --secondary: #424242
+*/
+
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --primary: #1976d2;
+  --accent: #ff9800;
+  --secondary: #424242;
+
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #fff;
+  --text-primary: #222a36;
+  --text-secondary: #424242;
+  --border-color: #cbe5fd;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
+/* App Container */
 .App {
   text-align: center;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Title */
+.App h1 {
+  letter-spacing: 1px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Board Grid */
+.ttt-board {
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+/* Board Cell (Square) */
+.ttt-square {
+  background: #fff;
+  color: var(--primary);
+  font-size: 38px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2.5px solid var(--primary);
+  transition: background 0.20s, color 0.20s, border-color 0.20s, box-shadow 0.20s;
+  cursor: pointer;
+  box-shadow: 0 1.5px 6px 0 #1976d208;
+  outline: none;
+}
+.ttt-square:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.ttt-square:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 5px 2px #ff980044;
+}
+.ttt-square[data-highlight="true"] {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+/* Game Controls Block */
+section > div[style*='min-width'] {
+  box-shadow: 0 2px 10px 0 #1976d210;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+button {
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  margin: 0 5px;
+  border-radius: 7px;
+  transition: all 0.18s;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+button:focus-visible {
+  outline: 2px solid var(--accent);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+/* Mode button hints */
+[data-testid="pvp-btn"]:not(:disabled),
+[data-testid="pvc-btn"]:not(:disabled) {
+  border-color: #ccc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive Board/Grid */
+@media (max-width: 600px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, 52vw) !important;
+    grid-template-rows: repeat(3, 52vw) !important;
+    min-width: 98vw !important;
+    gap: 2vw;
   }
-  to {
-    transform: rotate(360deg);
+  .ttt-square {
+    width: 98%;
+    height: 98%;
+    font-size: 8vw;
+  }
+  section > div[style*='min-width'] {
+    min-width: 90vw !important;
+    max-width: 97vw !important;
   }
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+footer {
+  margin-top: 60px;
+  color: #888;
+  font-size: 15px;
+  opacity: .7;
 }
